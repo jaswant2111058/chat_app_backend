@@ -13,7 +13,7 @@ const static = path.join(__dirname, "/views")
 const http = require('http').Server(app);
 const io = require('socket.io')(http, {
     cors: {
-        origin: 'https://chat-app-tweeto.onrender.com',
+        origin: "https://chat-app-tweeto.onrender.com",
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
     }
 });

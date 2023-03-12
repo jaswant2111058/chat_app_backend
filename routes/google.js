@@ -30,7 +30,7 @@ router.get('/auth/google/callback',
 
 router.get('/redirecting', (req, res) => {
 
-  res.redirect('https://chat-app-tweeto.onrender.com/Test')
+  res.redirect('https://chat-app-tweeto.onrender.com/test')
 })
 
 router.get("/googlelogin", isLoggedIn, async (req, res) => {
