@@ -7,7 +7,7 @@ const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
 passport.use(new GoogleStrategy({
   clientID: GOOGLE_CLIENT_ID,
   clientSecret: GOOGLE_CLIENT_SECRET,
-  callbackURL: process.env.GCBURL||"http://localhost:5000/auth/google/callback",
+  callbackURL: process.env.GCBURL||"https://chat-app-swl5.onrender.com/auth/google/callback",
  scope:['profile','email'],
   passReqToCallback: true,
 },
