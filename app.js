@@ -13,7 +13,7 @@ const static = path.join(__dirname, "/views")
 const http = require('http').Server(app);
 const io = require('socket.io')(http, {
     cors: {
-        origin: "'https://chat-app-tweeto.onrender.com','http://localhost:3000'",
+        origin: "*",
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
     }
 });
@@ -52,7 +52,7 @@ mongoose.connect(process.env.DBCONNECTION, {
 
 app.use(
     cors({
-        origin: "'https://chat-app-tweeto.onrender.com','http://localhost:3000'",
+        origin: "https://chat-app-tweeto.onrender.com",
         methods: ['GET','POST','PUT','DELETE'],
         credentials: true
     })
