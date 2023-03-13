@@ -13,7 +13,7 @@ const static = path.join(__dirname, "/views")
 const http = require('http').Server(app);
 const io = require('socket.io')(http, {
     cors: {
-        origin: "https://chat-app-tweeto.onrender.com",
+        origin: "'https://chat-app-tweeto.onrender.com','http://localhost:3000'",
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
     }
 });
@@ -52,8 +52,8 @@ mongoose.connect(process.env.DBCONNECTION, {
 
 app.use(
     cors({
-        origin: "https://chat-app-tweeto.onrender.com",
-        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        origin: "'https://chat-app-tweeto.onrender.com','http://localhost:3000'",
+        methods: ['GET','POST','PUT','DELETE'],
         credentials: true
     })
 );
@@ -73,5 +73,5 @@ app.use("/", tweets);
 
 
 http.listen(process.env.PORT || '5000', () => {
-    console.log(`Server started at port ${process.env.PORT || '5000'}`);
+    console.log(`Server started at port ${process.env.PORT ||'5000'}`);
 });
