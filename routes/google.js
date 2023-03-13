@@ -33,7 +33,7 @@ router.get('/redirecting', (req, res) => {
   res.redirect('https://chat-app-tweeto.onrender.com')
 })
 
-router.get("/googlelogin", isLoggedIn, async (req, res) => {
+router.get("/googlelogin", async (req, res) => {
   const email = req.email;
   const semail = await schema.findOne({ email: email })
   if (!semail) {
