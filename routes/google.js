@@ -8,12 +8,16 @@ const bodyParser = require("body-parser")
 router.use(cookie());
 router.use(bodyParser.urlencoded({ extended: true }));
 const jwt = require("jsonwebtoken");
-const isLoggedIn = require("../middleware/middleware")
+//const isLoggedIn = require("../middleware/middleware")
 require("../middleware/auth")
 router.use(session({ secret: "jassi", resave: false, saveUninitialized: true }));
 router.use(passport.initialize());
 router.use(passport.session());
 const time = 1000 * 15 * 60;
+
+function isLoggedIn(req, res, next) {
+  req.user ? next() : res.redirect("/login");
+}
 
 
 router.get('/auth/google',
@@ -33,8 +37,8 @@ router.get('/redirecting', (req, res) => {
   res.redirect('https://chat-app-tweeto.onrender.com')
 })
 
-router.get("/googlelogin", async (req, res) => {
-  const email = req.email;
+router.get("/googlelogin",isLoggedIn,async (req, res) => {
+  const email = req.user.email;
   const semail = await schema.findOne({ email: email })
   if (!semail) {
     try {
