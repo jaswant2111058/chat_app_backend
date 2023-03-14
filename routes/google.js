@@ -16,7 +16,7 @@ router.use(passport.session());
 const time = 1000 * 15 * 60;
 
 function isLoggedIn(req, res, next) {
-  req.user ? next() : res.redirect("/login");
+  req.user ? next() : res.redirect("https://chat-app-tweeto.onrender.com/");
 }
 
 
