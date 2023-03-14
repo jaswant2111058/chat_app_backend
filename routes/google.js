@@ -38,7 +38,7 @@ router.get('/redirecting', (req, res) => {
 })
 
 router.post("/googlelogin",async (req, res) => {
-  const email = 'jkstar0123@gmail.com';
+  const email = req.user.email;
   const semail = await schema.findOne({ email: email })
   if (!semail) {
     try {
